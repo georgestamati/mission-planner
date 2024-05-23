@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
+import { GITHUB_URL } from '../../shared/constants';
 
 @Component({
   selector: 'app-navbar',
@@ -24,6 +25,6 @@ export class NavbarComponent implements OnInit {
   }
 
   goToGithubPage() {
-    window.location.href = 'https://github.com/georgestamati/mission-planner';
+    window.location.href = GITHUB_URL;
   }
 }

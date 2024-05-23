@@ -1,0 +1,23 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+mat-card {
+  max-width: 800px;
+  width: 100%;
+}
+
+mat-card-header {
+  text-align: center;
+}
+
+mat-divider {
+  margin: 20px 0;
+}
+
+mat-card-content {
+  font-size: 16px;
+}
