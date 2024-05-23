@@ -25,6 +25,6 @@ export class NavbarComponent implements OnInit {
   }
 
   goToGithubPage() {
-    window.location.href = GITHUB_URL;
+    window.open(GITHUB_URL, '_blank');
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Point } from './planner.interface';
+import { PointsService } from '../../services/points.service';
 
 @Component({
   selector: 'app-planner',
@@ -15,7 +16,7 @@ export class PlannerComponent implements OnInit {
   displayedColumns: string[] = ['index', 'name', 'x', 'y'];
   dataSource = new MatTableDataSource<Point>(this.points);
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private pointsService: PointsService) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -43,14 +44,12 @@ export class PlannerComponent implements OnInit {
   }
 
   savePoints(): void {
-    localStorage.setItem('points', JSON.stringify(this.points));
+    const items = JSON.stringify(this.points);
+    this.pointsService.saveItems('points', items);
   }
 
-  loadPoints(): void {
-    const savedPoints = localStorage.getItem('points');
-    if (savedPoints) {
-      this.points = JSON.parse(savedPoints);
-      this.dataSource.data = this.points;
-    }
+  loadPoints() {
+    this.points = this.pointsService.loadItems('points');
+    this.dataSource.data = this.points;
   }
 }

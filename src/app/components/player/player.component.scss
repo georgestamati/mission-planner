@@ -1,0 +1,44 @@
+.player-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  .points-list {
+    flex: 1;
+    padding: 0 20px;
+    overflow-y: auto;
+    border-right: 1px solid #ccc;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 10px 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+
+  .visualization-area {
+    flex: 2;
+    padding: 20px;
+  }
+
+  .controls {
+    margin-top: 20px;
+    text-align: center;
+
+    button {
+      margin-right: 10px;
+
+      mat-icon {
+        margin: 0;
+      }
+    }
+  }
+}
