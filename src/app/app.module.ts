@@ -10,6 +10,7 @@ import { PlannerComponent } from './components/planner/planner.component';
 import { PlayerComponent } from './components/player/player.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from './shared/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { MaterialModule } from './shared/material.module';
     PlayerComponent,
     NavbarComponent,
   ],
-  imports: [BrowserModule, MaterialModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    AppRoutingModule,
+  ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
