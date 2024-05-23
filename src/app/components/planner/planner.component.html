@@ -1,1 +1,65 @@
-<p>planner works!</p>
+<div class="planner-container">
+  <h2 class="planner-title">Planner</h2>
+  <form [formGroup]="pointForm" (ngSubmit)="addPoint()" class="planner-form">
+    <div class="form-row">
+      <mat-form-field class="full-width">
+        <mat-label>Point Name</mat-label>
+        <input matInput formControlName="name" />
+        @if (pointForm.controls['name'].invalid && pointForm.controls['name'].touched){
+        <mat-error> Name is required </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field class="half-width">
+        <mat-label>X Coordinate</mat-label>
+        <input matInput type="number" formControlName="x" />
+        @if(pointForm.controls['x'].invalid && pointForm.controls['x'].touched){
+        <mat-error> X Coordinate is required </mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="half-width">
+        <mat-label>Y Coordinate</mat-label>
+        <input matInput type="number" formControlName="y" />
+        @if(pointForm.controls['y'].invalid && pointForm.controls['y'].touched){
+        <mat-error> Y Coordinate is required </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="pointForm.invalid">Add Point</button>
+    </div>
+  </form>
+
+  <div class="points-table">
+    <h3>Points List</h3>
+    @if(points.length){
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Index</th>
+        <td mat-cell *matCellDef="let point; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let point">{{ point.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="x">
+        <th mat-header-cell *matHeaderCellDef>X</th>
+        <td mat-cell *matCellDef="let point">{{ point.x }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="y">
+        <th mat-header-cell *matHeaderCellDef>Y</th>
+        <td mat-cell *matCellDef="let point">{{ point.y }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    } @else {
+    <div>There are no points added.</div>
+    }
+  </div>
+</div>
