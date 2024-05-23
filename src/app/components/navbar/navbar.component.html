@@ -1,0 +1,21 @@
+<mat-toolbar class="app-toolbar">
+  <div>
+    <a routerLink="/home">
+      <img src="../../../assets/images/anybotics.png"
+    /></a>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/home">Home</a>
+      <a mat-menu-item routerLink="/planner">Planner</a>
+      <a mat-menu-item routerLink="/player">Player</a>
+    </mat-menu>
+    <span>{{ title }}</span>
+  </div>
+  <div>
+    <a href="https://github.com/georgestamati/mission-planner">
+      <mat-icon>share</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>
